@@ -1,0 +1,8 @@
+# Python specific
+__pycache__/
+
+# virtual env
+Pipfile
+
+# IDE configs
+.idea/
