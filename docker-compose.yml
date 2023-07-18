@@ -1,0 +1,39 @@
+services:
+  backend:
+    build: .
+    ports:
+      - "80:80"
+    # Mirror the source code from the localhost inside the container.
+    # Using this method, the code changes done on the localhost are
+    # immediately available inside the docker container without the
+    # need to rebuild the image. This setup enhances the development.
+    # However, copying the code inside the image has various advantages
+    # for production environments.
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - database
+    env_file: .env
+    # Overwrite the CMD command defined in the Dockerfile. The command
+    # below delays the start of the backend container to allow the
+    # database to get started and initialized. The 5 seconds delay
+    # should be enough for the database to reach the state where it is
+    # ready to accept connections.
+    command:
+      - /bin/sh
+      - -c
+      - |
+        echo "waiting 5 seconds"
+        sleep 5
+        uvicorn backend.main:app --reload --host 0.0.0.0 --port 80
+
+  database:
+    image: "postgres:latest"
+    env_file: .env
+    volumes:
+      - storage-vol:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  storage-vol:
