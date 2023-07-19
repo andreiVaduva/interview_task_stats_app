@@ -63,7 +63,7 @@ docker volume rm interview_task_stats_app_storage-vol   # remove the storage and
 ## Tests
 
 The application has been manually tested with a bunch of various inputs. Besides this, it has been
-also tested with 10.000 database entries.
+also tested with 1.000.000 database entries.
 
 While `Pydantic` does various validations ensuring the type checks for the endpoints (see `main.py`),
 the database operations (see `crud.py`) would have benefited from a suite of unit tests.

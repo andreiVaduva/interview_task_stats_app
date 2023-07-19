@@ -19,9 +19,9 @@ from .schemas import MessageType
 # NOTE:
 #    Please be mindful as the messages are generated in memory,
 #    and a higher number might cause issues. Tested locally with
-#    10_000 entries and worked well, but this depends from case
+#    1_000_000 entries and worked well, but this depends from case
 #    to case, based on the local setup and available resources.
-_MAX_RANDOM_MESSAGES_NR = 100
+_MAX_RANDOM_MESSAGES_NR = 10_000
 
 
 def _get_random_message() -> dict:

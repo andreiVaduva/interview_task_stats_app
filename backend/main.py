@@ -32,9 +32,9 @@ models.Base.metadata.create_all(bind=engine)
 #        result: empty database that can be populated at a later point
 #   3. POPULATE DATABASE WITH RANDOM MESSAGES
 #        action: use the parameters
-#               (use_random_messages=True, random_messages_nr=100)
+#               (use_random_messages=True, random_messages_nr=1_000)
 #        result: fill the database with the given number of random messages
-#                (100 is the maximum allowed currently - can be changed)
+#                (10_000 is the maximum allowed currently - can be changed)
 fill_db.run(use_random_messages=False)
 
 # Create the FastAPI app.
